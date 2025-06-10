@@ -1,7 +1,18 @@
-const MarketingLayout = () => {
+import { Footer } from "./footer";
+import { Header } from "./header";
+
+type Props = {
+    children: React.ReactNode;
+}
+
+const MarketingLayout = ({children} : Props) => {
     return (
-        <div>
-            Layout !
+        <div className="min-h-screen flex flex-col">
+            <Header/>
+            <main className="flex-1 flex items-center justify-center">
+                {children}
+            </main>
+            <Footer/>
         </div>
     );
 }
