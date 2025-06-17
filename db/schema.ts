@@ -1,6 +1,7 @@
 
 import { relations } from "drizzle-orm";
 import { pgTable, integer, serial, text } from "drizzle-orm/pg-core";
+import { title } from "process";
 
 
 export const courses = pgTable("courses", {
@@ -12,6 +13,24 @@ export const courses = pgTable("courses", {
 export const courseRelations = relations(courses, ({many}) => ({
     userProgress: many(userProgress)
 }));
+
+export const units = pgTable("units", {
+    id: serial("id").primaryKey(),
+    title: text("title").notNull(),
+    description: text("description").notNull(),
+    courseId: integer("course_id").references(() => courses.id, {onDelete: "cascade"}).notNull(),
+    order: integer("order").notNull()
+})
+
+export const unitRelations = relations(units, ({many, one}) => ({
+    course: one(courses, {
+        fields: [units.courseId],
+        references: [courses.id],
+    })
+}))
+
+
+
 
 export const userProgress = pgTable("user_progress", {
     userId: text("user_id").primaryKey(),
@@ -30,3 +49,4 @@ export const userProgressRelations = relations(userProgress, ({one}) => ({
         references: [courses.id],
     }),
 }));
+
