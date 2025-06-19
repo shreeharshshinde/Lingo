@@ -13,6 +13,11 @@ const main = async () => {
 
         await db.delete(schema.courses);
         await db.delete(schema.userProgress);
+        await db.delete(schema.challengeOptions);
+        await db.delete(schema.challengeProgress);
+        await db.delete(schema.challenges);
+        await db.delete(schema.units);
+        await db.delete(schema.lessons);
 
         await db.insert(schema.courses).values([
             {
@@ -37,7 +42,38 @@ const main = async () => {
             },
 
         ]);
-        console.log('Deleted existing data.');
+
+        await db.insert(schema.units).values([
+            {
+                id: 1,
+                courseId: 1,
+                title: "Unit 1",
+                description: "Learn the Basics of Spanish",
+                order: 1
+            }
+        ]);
+
+        await db.insert(schema.lessons).values([
+            {
+               id: 1,
+               unitId: 1,
+               order: 1,
+               title: "Nouns" 
+            },
+            {
+               id: 2,
+               unitId: 1,
+               order: 2,
+               title: "Verbs" 
+            },
+
+        ])
+
+        await db.insert(schema.challenges).values([
+            
+        ])
+
+        console.log("Seeding Finished Successfully...")
     } catch (error) {
         console.error('Error seeding database:', error);
         throw new Error('Database seeding failed');
