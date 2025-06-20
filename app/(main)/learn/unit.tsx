@@ -32,7 +32,7 @@ export const Unit = ({id, order, title, description, lessons, activeLesson, acti
                             id={lesson.id} 
                             index={index} 
                             totalCount={lessons.length - 1} 
-                            current={isCurrent || true} // true is hardcoded for testing ui
+                            current={isCurrent} 
                             locked={isLocked} 
                             percentage={activeLessonPercentage}
                         />
