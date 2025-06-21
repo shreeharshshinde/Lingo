@@ -4,20 +4,6 @@ A full-featured clone of [Duolingo](https://www.duolingo.com), built with the la
 
 ---
 
-### 📚 Table of Contents
-
-- [Tech Stack](#-tech-stack)
-- [Features](#-features)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [Environment Variables](#-environment-variables)
-- [Deployment](#-deployment)
-- [Learn More](#-learn-more)
-- [Acknowledgements](#-acknowledgements)
-- [License](#-license)
-
----
-
 ### 🛠️ Tech Stack
 
 | Technology     | Purpose                          |
